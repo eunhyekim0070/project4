@@ -1,0 +1,9 @@
+from bs4 import BeautifulSoup
+import requests
+
+html = requests.get('https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=강남+날씨')
+soup = BeautifulSoup(html.text, 'html.parser')
+
+#위치
+address = soup.find('div', {'class':'title_area_area_panel'}).text
+print(address)
